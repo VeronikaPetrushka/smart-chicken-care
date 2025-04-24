@@ -13,8 +13,6 @@ import ChickenBrandReadRoute from './App/sourceRoutes/ChickenBrandReadRoute';
 import ChickenBrandsRoute from './App/sourceRoutes/ChickenBrandsRoute';
 import ChickenComparisonRoute from './App/sourceRoutes/ChickenComparisonRoute';
 import ChickenExpensesRoute from './App/sourceRoutes/ChickenExpensesRoute';
-import ChickenFeedReadRoute from './App/sourceRoutes/ChickenFeedReadRoute';
-import ChickenFeedShopRoute from './App/sourceRoutes/ChickenFeedShopRoute';
 import ChickenGameRoute from './App/sourceRoutes/ChickenGameRoute';
 import AppPreviewRoute from './App/sourceRoutes/AppPreviewRoute';
 import AppSettingsRoute from './App/sourceRoutes/AppSettingsRoute';
@@ -68,16 +66,6 @@ const App = () => {
                         <Stack.Screen 
                               name="ChickenExpensesRoute" 
                               component={ChickenExpensesRoute} 
-                              options={{ headerShown: false }} 
-                        />
-                        <Stack.Screen 
-                              name="ChickenFeedReadRoute" 
-                              component={ChickenFeedReadRoute} 
-                              options={{ headerShown: false }} 
-                        />
-                        <Stack.Screen 
-                              name="ChickenFeedShopRoute" 
-                              component={ChickenFeedShopRoute} 
                               options={{ headerShown: false }} 
                         />
                         <Stack.Screen 
