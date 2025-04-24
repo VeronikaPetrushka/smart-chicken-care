@@ -95,7 +95,7 @@ const ChickenBook = () => {
                     )
                 }
 
-                <View style={{height: 170}} />
+                <View style={{height: 300}} />
             </ScrollView>
             
         </View>

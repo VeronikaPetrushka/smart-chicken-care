@@ -104,7 +104,7 @@ const ChickenBrands = () => {
                                 )
                             }
 
-                            <View style={{height: 170}} />
+                            <View style={{height: 300}} />
                         </ScrollView>
 
                     </View>
@@ -128,7 +128,7 @@ const ChickenBrands = () => {
                             <Text style={styles.moreBtnText}>Learn more</Text>
                         </TouchableOpacity>
 
-                        <View style={{height: 170}} />
+                        <View style={{height: 300}} />
                     </ScrollView>
                 )
             }

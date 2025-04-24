@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Image, TouchableOpacity, Text, StyleSheet, Dimensions, Modal, Alert } from 'react-native';
+import { View, Image, TouchableOpacity, Text, StyleSheet, Dimensions, Modal, Alert, ScrollView } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Slider from '@react-native-community/slider';
 import { useMusic } from '../sourceConstants/AppMusicInitializer.js';
@@ -22,61 +22,65 @@ const AppSettings = () => {
 
     return (
         <View style={{ flex: 1, alignItems: 'center' }}>
-            
-            <Image
-                source={require('../sourceAssets/appDecor/chicken-left.png')}
-                style={{ width: 147, height: 143, resizeMode: 'contain', marginTop: height * 0.05, alignSelf: 'flex-start', marginLeft: 50, zIndex: 10 }} />
-            
-            <View style={styles.container}>
 
-                <View style={styles.row}>
-                    <Image
-                        source={require('../sourceAssets/appIcons/appMusic.png')}
-                        style={{ width: 45, height: 45, resizeMode: 'contain', marginRight: 12 }}
-                    />
-                    <Text style={styles.text}>Music</Text>
-                </View>
+            <ScrollView style={{ width: '100%' }}>
+                <Image
+                    source={require('../sourceAssets/appDecor/chicken-left.png')}
+                    style={{ width: 147, height: 143, resizeMode: 'contain', marginTop: height * 0.05, alignSelf: 'flex-start', marginLeft: 50, zIndex: 10 }} />
+                
+                <View style={styles.container}>
 
-                <View style={{ height: 17, justifyContent: 'center', borderRadius: 20, backgroundColor: '#5d092a', paddingHorizontal: 5, marginBottom: 53 }}>
-                    <Slider
-                        style={{ width: '100%' }}
-                        minimumValue={0}
-                        maximumValue={1}
-                        step={0.01}
-                        minimumTrackTintColor="#5d092a"
-                        maximumTrackTintColor="#fff"
-                        thumbTintColor="#ff9e36"
-                        value={volume}
-                        onValueChange={(val) => {
-                            setVolume(val);
-                            if (val === 0 && isPlaying) togglePlay();
-                            if (val > 0 && !isPlaying) togglePlay();
-                        }}
-                    />
-                </View>
-
-                <View style={[styles.row, {justifyContent: 'space-between'}]}>
-                    <TouchableOpacity onPress={() => setIsVibrate((prev) => !prev)}>
+                    <View style={styles.row}>
                         <Image
-                            source={isVibrate ? require('../sourceAssets/appIcons/vibroOn.png')
-                                : require('../sourceAssets/appIcons/vibroOff.png')}
-                            style={{width: 42, height: 23, resizeMode: 'contain'}}
+                            source={require('../sourceAssets/appIcons/appMusic.png')}
+                            style={{ width: 45, height: 45, resizeMode: 'contain', marginRight: 12 }}
                         />
-                    </TouchableOpacity>
-                    <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                        <Image
-                            source={require('../sourceAssets/appIcons/appVibro.png')}
-                            style={{ width: 45, height: 45, resizeMode: 'contain', marginRight: 12}}
+                        <Text style={styles.text}>Music</Text>
+                    </View>
+
+                    <View style={{ height: 17, justifyContent: 'center', borderRadius: 20, backgroundColor: '#5d092a', paddingHorizontal: 5, marginBottom: 53 }}>
+                        <Slider
+                            style={{ width: '100%' }}
+                            minimumValue={0}
+                            maximumValue={1}
+                            step={0.01}
+                            minimumTrackTintColor="#5d092a"
+                            maximumTrackTintColor="#fff"
+                            thumbTintColor="#ff9e36"
+                            value={volume}
+                            onValueChange={(val) => {
+                                setVolume(val);
+                                if (val === 0 && isPlaying) togglePlay();
+                                if (val > 0 && !isPlaying) togglePlay();
+                            }}
                         />
-                        <Text style={styles.text}>Vibration</Text>
+                    </View>
+
+                    <View style={[styles.row, {justifyContent: 'space-between'}]}>
+                        <TouchableOpacity onPress={() => setIsVibrate((prev) => !prev)}>
+                            <Image
+                                source={isVibrate ? require('../sourceAssets/appIcons/vibroOn.png')
+                                    : require('../sourceAssets/appIcons/vibroOff.png')}
+                                style={{width: 42, height: 23, resizeMode: 'contain'}}
+                            />
+                        </TouchableOpacity>
+                        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                            <Image
+                                source={require('../sourceAssets/appIcons/appVibro.png')}
+                                style={{ width: 45, height: 45, resizeMode: 'contain', marginRight: 12}}
+                            />
+                            <Text style={styles.text}>Vibration</Text>
+                        </View>
                     </View>
                 </View>
-            </View>
+                
+                <TouchableOpacity style={styles.moreBtn} onPress={() => setResetModalVisible(true)}>
+                    <Text style={styles.moreBtnText}>Reset progress</Text>
+                </TouchableOpacity>
+                
+                <View style={{height: 300}} />
+            </ScrollView>
             
-           <TouchableOpacity style={styles.moreBtn} onPress={() => setResetModalVisible(true)}>
-                <Text style={styles.moreBtnText}>Reset progress</Text>
-            </TouchableOpacity>
-
             <Modal
                 animationType="fade"
                 transparent

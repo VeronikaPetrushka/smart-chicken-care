@@ -74,7 +74,7 @@ const AddChickenExpenses = () => {
                                 <Text style={styles.moreBtnText}>Begin</Text>
                             </TouchableOpacity>
 
-                            <View style={{height: 170}} />
+                            <View style={{height: 300}} />
                         </ScrollView>
 
                     </View>
